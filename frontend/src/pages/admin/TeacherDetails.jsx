@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import api from "../../api/axios";
 import { SUBJECTS } from "../../constants/subjects";
 
@@ -18,13 +18,9 @@ export default function TeacherDetails({ teacher, setSection }) {
 
   /* ================= LOAD ASSIGNED SUBJECTS ================= */
 
-  useEffect(() => {
-    if (teacher?.id) {
-      fetchSubjects();
-    }
-  }, [teacher]);
+  const fetchSubjects = useCallback(async () => {
+    if (!teacher?.id) return;
 
-  const fetchSubjects = async () => {
     try {
       const res = await api.get(
         `/admin/admin/teachers/${teacher.id}/subjects`
@@ -33,7 +29,11 @@ export default function TeacherDetails({ teacher, setSection }) {
     } catch {
       console.error("Failed to load subjects");
     }
-  };
+  }, [teacher]);
+
+  useEffect(() => {
+    fetchSubjects();
+  }, [fetchSubjects]);
 
   /* ================= ASSIGN SUBJECT ================= */
 
@@ -52,7 +52,7 @@ export default function TeacherDetails({ teacher, setSection }) {
         `/admin/admin/teachers/${teacher.id}/subjects`,
         {
           subject: form.subject,
-          year: Number(form.year)   // ✅ ensure number
+          year: Number(form.year)
         }
       );
 
@@ -143,7 +143,7 @@ export default function TeacherDetails({ teacher, setSection }) {
         <p><span className="text-slate-400">Branch:</span> {teacher.branch}</p>
       </div>
 
-      {/* 🔴 CHANGE BRANCH */}
+      {/* CHANGE BRANCH */}
       <div className="bg-indigo-950 p-4 rounded border border-indigo-800 space-y-3">
         <h3 className="font-semibold text-indigo-300">
           Move Teacher to BCA
