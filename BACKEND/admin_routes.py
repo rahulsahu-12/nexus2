@@ -557,7 +557,7 @@ def delete_teacher_subject(
 
     return {"message": "Subject deleted successfully"}
 
-@router.put("/admin/teachers/{id}/branch")
+@router.put("/teachers/{id}/branch")
 def change_teacher_branch(
     id: int,
     branch: str,
@@ -585,3 +585,7 @@ def change_teacher_branch(
     return {
         "message": "Teacher branch updated. Subjects cleared."
     }
+
+@router.options("/{path:path}")
+def admin_options_handler(path: str):
+    return {}

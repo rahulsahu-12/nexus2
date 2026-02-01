@@ -43,7 +43,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
     "http://localhost:3000",
-    "http://192.168.1.7:3000"
+    "http://192.168.1.7:3000",
+    "https://your-frontend-url.onrender.com"
 ]
 ,
     allow_credentials=True,
@@ -91,7 +92,7 @@ def startup_event():
 # ROUTERS
 # ------------------------
 app.include_router(auth_router)
-app.include_router(admin_router, prefix="/admin")
+app.include_router(admin_router)
 app.include_router(teacher_dashboard_router)
 app.include_router(chatbot_router)
 app.include_router(notes.router)
