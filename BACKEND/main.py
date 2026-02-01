@@ -52,6 +52,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.options("/{path:path}")
+def global_preflight(path: str):
+    return Response(status_code=200)
+
 # ------------------------
 # STATIC FILES
 # ------------------------
