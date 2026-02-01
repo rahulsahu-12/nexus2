@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TeacherLayout from "../TeacherLayout";
-import axios from "../../../api/axios";
+import api from "../../../api/axios";
 
 export default function MyNotes({ setPage }) {
   const [notes, setNotes] = useState([]);

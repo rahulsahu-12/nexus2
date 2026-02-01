@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import TeacherLayout from "../TeacherLayout";
-import axios from "../../../api/axios";
+import api from "../../../api/axios";
 
 export default function CreateAssignment({ setPage }) {
   const [title, setTitle] = useState("");
@@ -15,7 +15,7 @@ export default function CreateAssignment({ setPage }) {
 
   /* ---------- LOAD SUBJECTS ---------- */
   useEffect(() => {
-    axios
+    api
       .get("/teacher/attendance/subjects")
       .then(res => setSubjects(res.data || []))
       .catch(() => setSubjects([]));

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import TeacherLayout from "../TeacherLayout";
-import axios from "../../../api/axios";
+import api from "../../../api/axios";
 
 export default function AssignmentAnalytics({ assignmentId, setPage }) {
   const [summary, setSummary] = useState(null);
@@ -9,7 +9,7 @@ export default function AssignmentAnalytics({ assignmentId, setPage }) {
 
   useEffect(() => {
     // Load summary
-    axios
+    api
       .get("/teacher/assignments/analytics/summary")
       .then(res => {
         const found = res.data.find(
@@ -19,12 +19,12 @@ export default function AssignmentAnalytics({ assignmentId, setPage }) {
       });
 
     // Load pending (not submitted)
-    axios
+    api
       .get(`/teacher/assignments/${assignmentId}/analytics/pending`)
       .then(res => setPending(res.data || []));
 
     // 🔥 Load submitted students
-    axios
+    api
       .get(`/teacher/assignments/${assignmentId}/submissions`)
       .then(res => setSubmissions(res.data || []));
   }, [assignmentId]);
@@ -49,7 +49,7 @@ export default function AssignmentAnalytics({ assignmentId, setPage }) {
   };
 
   const refreshSubmissions = () => {
-    axios
+    api
       .get(`/teacher/assignments/${assignmentId}/submissions`)
       .then(res => setSubmissions(res.data || []));
   };

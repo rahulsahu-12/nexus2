@@ -32,7 +32,7 @@ export default function AttendanceQRModal({ onClose }) {
 
           setSuccess(true);
 
-          await apipost("/student/attendance/mark", {
+          await api.post("/student/attendance/mark", {
             session_code: sessionCode,
           });
 

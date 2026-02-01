@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import TeacherLayout from "../TeacherLayout";
-import axios from "../../../api/axios";
+import api from "../../../api/axios";
 
 export default function MyAssignments({ setPage }) {
   const [assignments, setAssignments] = useState([]);
@@ -16,7 +16,7 @@ export default function MyAssignments({ setPage }) {
   const [rejectReason, setRejectReason] = useState("");
 
   useEffect(() => {
-    axios
+    api
       .get("/teacher/assignments")
       .then((res) => {
         const data = Array.isArray(res.data)
