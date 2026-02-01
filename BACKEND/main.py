@@ -29,6 +29,7 @@ from routes import student
 # ------------------------
 app = FastAPI(title="NEXUS Backend")
 
+Base.metadata.create_all(bind=engine)
 # ------------------------
 # FOLDERS
 # ------------------------
