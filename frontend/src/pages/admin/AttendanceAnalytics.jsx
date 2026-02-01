@@ -40,7 +40,7 @@ export default function AttendanceAnalytics() {
 
     setError("");
 
-    const res = await axios.get(
+    const res = await api.get(
       `/admin/admin/attendance/analytics?start_date=${startDate}&end_date=${endDate}`
     );
 

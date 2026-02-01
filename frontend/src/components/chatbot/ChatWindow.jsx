@@ -36,7 +36,7 @@ export default function ChatWindow({ chat, addMessage, updateLast }) {
     setLoading(true);
 
     try {
-      const res = await axios.post("/chatbot/chat", {
+      const res = await api.post("/chatbot/chat", {
         message: userText,
       });
 

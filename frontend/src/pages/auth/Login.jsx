@@ -23,7 +23,7 @@ export default function Login({ onLogin, onRegister, onAdmin }) {
     try {
       setLoading(true);
 
-      const res = await axios.post("/token", {
+      const res = await api.post("/token", {
         mobile,
         password
       });

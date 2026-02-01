@@ -32,7 +32,7 @@ export default function AttendanceQRModal({ onClose }) {
 
           setSuccess(true);
 
-          await axios.post("/student/attendance/mark", {
+          await apipost("/student/attendance/mark", {
             session_code: sessionCode,
           });
 
@@ -65,7 +65,7 @@ export default function AttendanceQRModal({ onClose }) {
       setSubmitting(true);
       setSuccess(true);
 
-      await axios.post("/student/attendance/mark", {
+      await api.post("/student/attendance/mark", {
         digit_code: manualCode,
       });
 

@@ -30,7 +30,7 @@ export default function AssignmentAnalytics({ assignmentId, setPage }) {
   }, [assignmentId]);
 
   const approve = async (id) => {
-    await axios.post(`/teacher/assignments/submissions/${id}/approve`);
+    await api.post(`/teacher/assignments/submissions/${id}/approve`);
     refreshSubmissions();
   };
 
@@ -41,7 +41,7 @@ export default function AssignmentAnalytics({ assignmentId, setPage }) {
     const form = new FormData();
     form.append("remarks", remarks);
 
-    await axios.post(
+    await api.post(
       `/teacher/assignments/submissions/${id}/reject`,
       form
     );

@@ -22,7 +22,7 @@ export default function PDFAnalyzer() {
       setError("");
       setResult(null);
 
-      const res = await axios.post(
+      const res = await api.post(
         "/pdf-analyzer/analyze",
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }

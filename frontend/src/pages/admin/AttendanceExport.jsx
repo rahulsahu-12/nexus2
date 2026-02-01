@@ -6,7 +6,7 @@ export default function AttendanceExport() {
   const [end, setEnd] = useState("");
 
   const exportData = async () => {
-    const res = await axios.get(
+    const res = await api.get(
       `/admin/admin/attendance/export?start_date=${start}&end_date=${end}`,
       { responseType: "blob" }
     );

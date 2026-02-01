@@ -36,7 +36,7 @@ export default function MyAssignments({ setPage }) {
 
     try {
       setDeletingId(id);
-      await axios.delete(`/teacher/assignments/${id}`);
+      await api.delete(`/teacher/assignments/${id}`);
       setAssignments((prev) => prev.filter((a) => a.id !== id));
     } catch {
       alert("Failed to delete assignment");
@@ -56,7 +56,7 @@ export default function MyAssignments({ setPage }) {
     setLoadingSubs(true);
 
     try {
-      const res = await axios.get(
+      const res = await api.get(
         `/teacher/assignments/${assignmentId}/submissions`
       );
       setSubmissions(res.data);
@@ -69,7 +69,7 @@ export default function MyAssignments({ setPage }) {
 
   const approveSubmission = async (submissionId) => {
     try {
-      await axios.post(
+      await api.post(
         `/teacher/assignments/submissions/${submissionId}/approve`
       );
       setSubmissions((prev) =>
@@ -94,7 +94,7 @@ export default function MyAssignments({ setPage }) {
       const form = new FormData();
       form.append("remarks", rejectReason);
 
-      await axios.post(
+      await api.post(
         `/teacher/assignments/submissions/${submissionId}/reject`,
         form
       );
@@ -117,7 +117,7 @@ export default function MyAssignments({ setPage }) {
   // ✅ View submission PDF (axios + blob)
   const viewSubmissionPdf = async (submissionId) => {
     try {
-      const res = await axios.get(
+      const res = await api.get(
         `/teacher/assignments/submissions/${submissionId}/file`,
         { responseType: "blob" }
       );
@@ -136,7 +136,7 @@ export default function MyAssignments({ setPage }) {
   // ✅ EXPORT USING BACKEND (you already had this endpoint)
   const exportSubmissionsFromBackend = async (assignmentId) => {
     try {
-      const res = await axios.get(
+      const res = await api.get(
         `/teacher/assignments/${assignmentId}/submissions/export`,
         { responseType: "blob" }
       );

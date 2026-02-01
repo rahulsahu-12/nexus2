@@ -61,7 +61,7 @@ export default function Register({ onBack }) {
     if (!form.mobile) return alert("Enter mobile number");
     try {
       setLoading(true);
-      const res = await axios.post("/auth/send-otp", { mobile: form.mobile });
+      const res = await api.post("/auth/send-otp", { mobile: form.mobile });
       if (res.data.otp) setDevOtp(res.data.otp);
       setTimer(30);
       alert("OTP generated");
@@ -76,7 +76,7 @@ export default function Register({ onBack }) {
     if (!form.otp) return alert("Enter OTP");
     try {
       setLoading(true);
-      await axios.post("/auth/verify-otp", {
+      await api.post("/auth/verify-otp", {
         mobile: form.mobile,
         otp: form.otp
       });
@@ -110,7 +110,7 @@ export default function Register({ onBack }) {
         year: form.year   // ✅ already a NUMBER
       };
 
-      const res = await axios.post("/auth/register", payload);
+      const res = await api.post("/auth/register", payload);
 
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("role", res.data.role);

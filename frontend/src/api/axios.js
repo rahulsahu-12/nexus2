@@ -1,21 +1,18 @@
 import axios from "axios";
 
-const instance = axios.create({
-  timeout: 15000, // ⛔ NEVER hang forever
+const api = axios.create({
+  baseURL: process.env.REACT_APP_API_URL, // ✅ BACKEND ONLY
+  timeout: 15000,
 });
 
-instance.interceptors.request.use(
+api.interceptors.request.use(
   (config) => {
-    // ✅ Support BOTH token keys (no refactor needed)
     const token =
       localStorage.getItem("token") ||
       localStorage.getItem("access_token");
 
-    // ✅ NEVER send "Bearer undefined"
     if (token && token !== "undefined") {
       config.headers.Authorization = `Bearer ${token}`;
-    } else {
-      delete config.headers.Authorization;
     }
 
     return config;
@@ -23,12 +20,9 @@ instance.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-instance.interceptors.response.use(
+api.interceptors.response.use(
   (response) => response,
-  (error) => {
-    // 🔥 FORCE rejection (no hanging promises)
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
-export default instance;
+export default api;

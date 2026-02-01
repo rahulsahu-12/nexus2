@@ -6,13 +6,13 @@ export default function MyNotes({ setPage }) {
   const [notes, setNotes] = useState([]);
 
   const fetchNotes = async () => {
-    const res = await axios.get("/notes/teacher");
+    const res = await api.get("/notes/teacher");
     setNotes(res.data);
   };
 
   const deleteNote = async (id) => {
     if (!window.confirm("Delete this note permanently?")) return;
-    await axios.delete(`/notes/${id}`);
+    await api.delete(`/notes/${id}`);
     fetchNotes();
   };
 

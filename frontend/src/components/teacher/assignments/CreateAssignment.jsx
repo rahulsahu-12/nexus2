@@ -39,7 +39,7 @@ export default function CreateAssignment({ setPage }) {
       formData.append("description", description);
       if (file) formData.append("file", file);
 
-      await axios.post(
+      await api.post(
         "/teacher/assignments/create",
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }

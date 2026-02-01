@@ -23,7 +23,7 @@ export default function BranchUsers() {
     const normalizedYear = year ? parseInt(year) : "";
     const params = normalizedYear ? `?year=${normalizedYear}` : "";
 
-    const res = await axios.get(`/admin/admin/branch/${branch}${params}`);
+    const res = await api.get(`/admin/admin/branch/${branch}${params}`);
     setStudents(res.data.students || []);
     setTeachers(res.data.teachers || []);
   };
@@ -34,19 +34,19 @@ export default function BranchUsers() {
 
   const promote = async (id) => {
     if (!window.confirm("Promote student to teacher?")) return;
-    await axios.put(`/admin/admin/promote/${id}`);
+    await api.put(`/admin/admin/promote/${id}`);
     fetchData();
   };
 
   const undoPromotion = async (id) => {
     if (!window.confirm("Undo promotion and convert back to student?")) return;
-    await axios.put(`/admin/admin/demote/${id}`);
+    await api.put(`/admin/admin/demote/${id}`);
     fetchData();
   };
 
   const exportExcel = async () => {
     const params = year ? `?year=${year}` : "";
-    const res = await axios.get(
+    const res = await api.get(
       `/admin/admin/branch/${branch}/export${params}`,
       { responseType: "blob" }
     );

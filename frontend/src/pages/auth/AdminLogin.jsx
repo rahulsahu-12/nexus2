@@ -24,7 +24,7 @@ export default function AdminLogin({ onSuccess, onBack }) {
       setLoading(true);
 
       // 🔑 STAFF LOGIN (ADMIN + TEACHER)
-      const res = await axios.post("/admin/admin/login", {
+      const res = await api.post("/admin/admin/login", {
         mobile,
         password
       });

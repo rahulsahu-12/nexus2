@@ -23,7 +23,7 @@ export default function UserTable() {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("/admin/admin/users");
+      const res = await api.get("/admin/admin/users");
       setUsers(res.data);
     } catch (err) {
       alert("Failed to load users");
@@ -37,7 +37,7 @@ export default function UserTable() {
      ====================== */
   const promoteUser = async (id) => {
     try {
-      await axios.put(`/admin/admin/promote/${id}`);
+      await api.put(`/admin/admin/promote/${id}`);
       alert("User promoted to teacher");
       fetchUsers();
     } catch {
@@ -50,7 +50,7 @@ export default function UserTable() {
      ====================== */
   const deleteUser = async () => {
     try {
-      await axios.delete(`/admin/admin/users/${confirm.id}`);
+      await api.delete(`/admin/admin/users/${confirm.id}`);
       alert("User deleted");
       setConfirm(null);
       fetchUsers();

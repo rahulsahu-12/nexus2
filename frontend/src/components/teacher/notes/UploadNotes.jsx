@@ -10,7 +10,7 @@ export default function UploadNotes({ setPage }) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    axios.get("/notes/teacher/subjects")
+    api.get("/notes/teacher/subjects")
       .then(res => setSubjects(res.data))
       .catch(() => alert("Failed to load subjects"));
   }, []);
@@ -28,7 +28,7 @@ export default function UploadNotes({ setPage }) {
 
     try {
       setLoading(true);
-      await axios.post("/notes/upload", formData);
+      await api.post("/notes/upload", formData);
       setPage("teacher-my-notes");
     } finally {
       setLoading(false);
