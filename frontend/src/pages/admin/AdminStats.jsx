@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "../../api/axios";
+import api from "../../api/axios";
 
 export default function AdminStats() {
   const [stats, setStats] = useState(null);

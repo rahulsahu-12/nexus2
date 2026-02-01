@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "../../api/axios";
+import api from "../../api/axios";
 import ConfirmModal from "./ConfirmModal";
 
 export default function UserTable() {

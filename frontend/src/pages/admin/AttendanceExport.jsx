@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "../../api/axios";
+import api from "../../api/axios";
 
 export default function AttendanceExport() {
   const [start, setStart] = useState("");

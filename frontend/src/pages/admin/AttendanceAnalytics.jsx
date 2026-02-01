@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "../../api/axios";
+import api from "../../api/axios";
 
 import {
   Chart as ChartJS,

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "../../api/axios";
+import api from "../../api/axios";
 import { Download, ArrowUpCircle, Undo2 } from "lucide-react";
 
 const BRANCHES = ["BCA", "BBA", "BSC", "BTECH"];

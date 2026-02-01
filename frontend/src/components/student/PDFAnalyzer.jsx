@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "../../api/axios";
+import api from "../../api/axios";
 import jsPDF from "jspdf";
 
 export default function PDFAnalyzer() {

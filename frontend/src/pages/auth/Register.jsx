@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import axios from "../../api/axios";
+import api from "../../api/axios";
 import "./auth-glass.css";
 
 export default function Register({ onBack }) {
