@@ -11,7 +11,7 @@ export default function TeacherList({ setSection, setSelectedTeacher }) {
 
   const fetchTeachers = async () => {
     try {
-      const res = await api.get("/admin/admin/teachers");
+      const res = await api.get("/admin/teachers");
       setTeachers(res.data || []);
     } catch (err) {
       console.error("Failed to load teachers");

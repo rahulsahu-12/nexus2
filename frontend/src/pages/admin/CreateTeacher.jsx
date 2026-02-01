@@ -27,7 +27,7 @@ export default function CreateTeacher({ setSection, setSelectedTeacher }) {
 
     try {
       // Backend will be connected later
-      const res = await api.post("/admin/admin/teachers", form);
+      const res = await api.post("/admin/teachers", form);
 
       setSelectedTeacher({
         id: res.data.teacher_id,

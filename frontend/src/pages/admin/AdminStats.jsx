@@ -5,7 +5,7 @@ export default function AdminStats() {
   const [stats, setStats] = useState(null);
 
   useEffect(() => {
-    api.get("/admin/admin/stats").then((res) => {
+    api.get("/admin/stats").then((res) => {
       setStats(res.data);
     });
   }, []);

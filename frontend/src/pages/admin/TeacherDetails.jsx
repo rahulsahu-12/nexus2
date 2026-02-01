@@ -23,7 +23,7 @@ export default function TeacherDetails({ teacher, setSection }) {
 
     try {
       const res = await api.get(
-        `/admin/admin/teachers/${teacher.id}/subjects`
+        `/admin/teachers/${teacher.id}/subjects`
       );
       setSubjects(res.data || []);
     } catch {
@@ -49,7 +49,7 @@ export default function TeacherDetails({ teacher, setSection }) {
       setLoading(true);
 
       await api.post(
-        `/admin/admin/teachers/${teacher.id}/subjects`,
+        `/admin/teachers/${teacher.id}/subjects`,
         {
           subject: form.subject,
           year: Number(form.year)
@@ -74,7 +74,7 @@ export default function TeacherDetails({ teacher, setSection }) {
 
     try {
       await api.delete(
-        `/admin/admin/teachers/subjects/${subjectId}`
+        `/admin/teachers/subjects/${subjectId}`
       );
       fetchSubjects();
     } catch {
@@ -99,7 +99,7 @@ export default function TeacherDetails({ teacher, setSection }) {
       setBranchLoading(true);
 
       await api.put(
-        `/admin/admin/admin/teachers/${teacher.id}/branch`,
+        `/admin/teachers/${teacher.id}/branch`,
         null,
         { params: { branch: "BCA" } }
       );
